@@ -16,6 +16,7 @@ app.use(cors());
 
 app.post('/api-checkout-credit-card',async (req,res,next) => {
   console.log(req.body)  
+  res.header("Access-Control-Allow-Origin", "*");
   const {name,amount,token} = req.body ;
    
 try {
