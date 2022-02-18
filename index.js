@@ -43,6 +43,9 @@ next()
 })
 
 
-app.listen(80,() => {
-    console.log("server is up ...");
+const PORT = process.env.PORT || 80;
+var server = app.listen(PORT, function() {
+    var host = server.address().address;
+    var port = server.address().port;
+    console.log("server is listening at http://%s:%s", host, port);
 });
