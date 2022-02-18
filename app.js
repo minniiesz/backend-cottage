@@ -1,6 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require ("cors");
+const http = require('http');
+const https = require('https');
 const { DH_UNABLE_TO_CHECK_GENERATOR } = require("constants");
 require('dotenv').config();
 var omise = require('omise')({
@@ -8,7 +10,6 @@ var omise = require('omise')({
     'secretKey': process.env.OMISE_SECRET_KEY,
   });
 const app = express();
-
 app.use(bodyParser.json());
 app.use(cors());
 
@@ -45,4 +46,4 @@ next()
 
 const PORT = process.env.PORT || 80;
 
-app.listen(PORT, () => console.log(`Server is listening on port ${PORT}...`));
+https.createServer(app).listen(PORT, () => console.log(`Server is listening on port ${PORT}...`));
